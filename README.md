@@ -23,6 +23,10 @@ Version="2.0" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
+#### Validate SAMLResponse
+
+This operation is still in development. It validates the signature against the truststore from the IdP.
+
 ### Install 
 Add this dependency to your application pom.xml
 
