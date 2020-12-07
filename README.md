@@ -8,7 +8,7 @@ Mule 4.x extension for SAML. Extension allows you to perform the following opera
 
 #### Generate AuthNRequest
 
-Operation generates a deflated and encoded XML. You can use an online tool like [SAML Tool](https://www.samltool.com/decode.php) to base64 decode and inflate the intercepted SAML Message. See the example below.
+This operation generates a AuthNRequest that is Base64 encoded. You can use an online tool like [SAML Tool](https://www.samltool.com/decode.php) to base64 decode and inflate the intercepted message. See the example below.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
