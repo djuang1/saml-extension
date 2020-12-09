@@ -51,9 +51,6 @@ import org.xml.sax.SAXException;
 import org.mule.runtime.extension.api.annotation.param.Config;
 import org.mule.runtime.extension.api.annotation.param.Connection;
 
-/**
- * This class is a container for operations, every public method in this class will be taken as an extension operation.
- */
 public class SAMLOperations {
 
 	private static final String SAML2_NAME_ID_POLICY = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
@@ -73,7 +70,6 @@ public class SAMLOperations {
 			AuthnRequest authNRequest = buildAuthenticationRequest(assertionConsumerServiceUrl,issuerId, destinationUrl, providerName);
 			samlRequest = generateSAMLRequest(authNRequest);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return samlRequest;
@@ -86,15 +82,6 @@ public class SAMLOperations {
 			KeyStoreException, NoSuchAlgorithmException, CertificateException {
 
 		String assertionString = "";
-
-		/*
-		try {
-			DefaultBootstrap.bootstrap();
-		} catch (ConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
 
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		documentBuilderFactory.setNamespaceAware(true);
@@ -138,17 +125,6 @@ public class SAMLOperations {
 		StringWriter rspWrt = new StringWriter();
 		XMLHelper.writeNode(authDOM, rspWrt);
 		String messageXML = rspWrt.toString();
-
-		/*
-		 * System.out.println(messageXML); Deflater deflater = new
-		 * Deflater(Deflater.DEFLATED, true); ByteArrayOutputStream
-		 * byteArrayOutputStream = new ByteArrayOutputStream(); DeflaterOutputStream
-		 * deflaterOutputStream = new DeflaterOutputStream(byteArrayOutputStream,
-		 * deflater); deflaterOutputStream.write(messageXML.getBytes());
-		 * deflaterOutputStream.close();
-		 */		
-		// String samlRequest = Base64.encodeBytes(byteArrayOutputStream.toByteArray(), Base64.DONT_BREAK_LINES);
-		// return URLEncoder.encode(samlRequest, "UTF-8");
 		
 		String samlRequest = Base64.encodeBytes(messageXML.getBytes(), Base64.DONT_BREAK_LINES);
 		return samlRequest;
